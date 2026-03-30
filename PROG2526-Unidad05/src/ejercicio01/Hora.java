@@ -2,13 +2,7 @@ package ejercicio01;
 
 public class Hora {
 	private int hora;
-	private int minuto;
-
-	// CONSTRUCTOR POR DEFECTO
-	Hora() {
-		this.hora = 0;
-		this.minuto = 0;
-	}
+	protected int minuto;
 
 	// CONSTRUCTOR CON PARÁMETROS
 	Hora(int hora, int minuto) {
@@ -17,6 +11,14 @@ public class Hora {
 	}
 
 	// GETTERS Y SETTERS
+	public int getHora() {
+		return hora;
+	}
+
+	public int getMinuto() {
+		return minuto;
+	}
+
 	public void setHora(int hora) {
 		this.hora = (hora >= 0 && hora < 24) ? hora : 0;
 	}
@@ -26,31 +28,37 @@ public class Hora {
 	}
 
 	// MÉTODOS
+	/**
+	 * Incrementa la hora en un minuto
+	 */
 	public void inc() {
-		minuto++;
+		this.minuto++;
 		if (minuto == 60) {
-			minuto = 0;
-			hora++;
-			if (hora == 24) {
-				hora = 0;
-			}
+			this.minuto = 0;
+			++this.hora;
+		} else if (hora == 24) {
+			this.hora = 0;
 		}
 	}
 
-	public boolean setMinutos(int valor) {
-		boolean valido = false;
-		if (valor >= 0 && valor <= 59) {
-			valido = true;
-		}
-		return valido;
+	/**
+	 * Comprueba si los minutos introducidos son validos
+	 * 
+	 * @param minuto
+	 * @return True si el minuto es valido, false si no
+	 */
+	public boolean setMinutos(int minuto) {
+		return (minuto <= 59 && minuto >= 0);
 	}
 
-	public boolean setHoraV(int valor) {
-		boolean valido = false;
-		if (valor >= 0 && valor <= 23) {
-			valido = true;
-		}
-		return valido;
+	/**
+	 * Comprueba si la hora introducida es valida
+	 * 
+	 * @param hora
+	 * @return True si la hora es valida, false si no
+	 */
+	public boolean setHoras(int hora) {
+		return (hora <= 23 && hora >= 0);
 	}
 
 	public String toString() {
