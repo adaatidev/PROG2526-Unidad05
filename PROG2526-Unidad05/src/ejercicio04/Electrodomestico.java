@@ -1,90 +1,80 @@
 package ejercicio04;
 
 public class Electrodomestico {
-	enum consumoEnergetico {
-		A, B, C, D, E, F
-	}
-
-	enum colores {
-		blanco, negro, rojo, azul, gris
-	}
-
 	protected double precioBase;
-	protected colores color;
+	protected String color;
+	protected char consumoEnergetico;
 	protected double peso;
-	protected consumoEnergetico consumo;
 
-	Electrodomestico(double precioBase, double peso) {
+	// Valores por defecto
+	protected final String COLOR_DEF = "blanco";
+	protected final char CONSUMO_DEF = 'F';
+	protected final double PRECIO_BASE_DEF = 100;
+	protected final double PESO_DEF = 5;
+
+	// Constructor con precio y peso, resto por defecto
+	public Electrodomestico(double precioBase, double peso) {
 		this.precioBase = precioBase;
-		setColor(color);
 		this.peso = peso;
-		setConsumo(consumo);
+		this.color = COLOR_DEF;
+		this.consumoEnergetico = CONSUMO_DEF;
 	}
 
-	Electrodomestico(double precioBase, colores color, double peso, consumoEnergetico consumo) {
+	// Constructor con todos los atributos
+	public Electrodomestico(double precioBase, String color, char consumoEnergetico, double peso) {
 		this.precioBase = precioBase;
-		this.color = color;
+		comprobarColor(color);
+		comprobarConsumoEnergetico(consumoEnergetico);
 		this.peso = peso;
-		this.consumo = consumo;
 	}
 
+	// Getters necesarios
 	public double getPrecioBase() {
 		return precioBase;
 	}
 
-	public void setPrecioBase(double precioBase) {
-		this.precioBase = 100;
-	}
-
-	public colores getColor() {
-		return color;
-	}
-
-	public void setColor(colores color) {
-		this.color = colores.blanco;
-	}
-
-	public double getPeso() {
-		return peso;
-	}
-
-	public void setPeso(double peso) {
-		this.peso = 5;
-	}
-
-	public consumoEnergetico getConsumo() {
-		return consumo;
-	}
-
-	public void setConsumo(consumoEnergetico consumo) {
-		this.consumo = consumoEnergetico.F;
-	}
-
+	// Métodos privados de comprobación
 	private void comprobarConsumoEnergetico(char letra) {
-		switch (letra) {
-		case 'A' -> setConsumo(consumoEnergetico.A);
-		case 'B' -> setConsumo(consumoEnergetico.B);
-		case 'C' -> setConsumo(consumoEnergetico.C);
-		case 'D' -> setConsumo(consumoEnergetico.D);
-		case 'E' -> setConsumo(consumoEnergetico.E);
-		case 'F' -> setConsumo(consumoEnergetico.F);
-		default -> setConsumo(consumoEnergetico.F);
+		if (letra >= 'A' && letra <= 'F') {
+			this.consumoEnergetico = letra;
+		} else {
+			this.consumoEnergetico = CONSUMO_DEF;
 		}
 	}
 
 	private void comprobarColor(String color) {
-		switch (color) {
-		case "blanco" -> setColor(colores.blanco);
-		case "negro" -> setColor(colores.negro);
-		case "rojo" -> setColor(colores.rojo);
-		case "azul" -> setColor(colores.azul);
-		case "gris" -> setColor(colores.gris);
-		default -> setColor(colores.blanco);
+		String[] colores = { "blanco", "negro", "rojo", "azul", "gris" };
+		boolean encontrado = false;
+		for (String c : colores) {
+			if (c.equalsIgnoreCase(color)) {
+				encontrado = true;
+				break;
+			}
 		}
+		this.color = encontrado ? color.toLowerCase() : COLOR_DEF;
 	}
 
-	private void precioFinal() {
+	// Cálculo del precio final según consumo y peso
+	public double precioFinal() {
+		double plus = 0;
+		switch (consumoEnergetico) {
+		case 'A' -> plus += 100;
+		case 'B' -> plus += 80;
+		case 'C' -> plus += 60;
+		case 'D' -> plus += 50;
+		case 'E' -> plus += 30;
+		case 'F' -> plus += 10;
+		}
+		if (peso >= 0 && peso < 19) {
+			plus += 10;
+		} else if (peso >= 20 && peso < 49) {
+			plus += 50;
+		} else if (peso >= 50 && peso < 79) {
+			plus += 80;
+		} else if (peso >= 80) {
+			plus += 100;
+		}
 
+		return precioBase + plus;
 	}
-
 }
