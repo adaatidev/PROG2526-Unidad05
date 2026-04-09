@@ -28,11 +28,18 @@ public class Rectangulo extends Poligono {
 		this.lado2 = lado2;
 	}
 
+	/**
+	 * Método area que devuelve el área del rectángulo
+	 */
 	@Override
 	public double area() {
 		return lado1 * lado2;
 	}
 
+	/**
+	 * Método string que devuelve una cadena con el tipo de polígono y el el número
+	 * de lados
+	 */
 	@Override
 	public String toString() {
 		String cadena = "";

@@ -38,6 +38,9 @@ public class Triangulo extends Poligono {
 		this.lado3 = lado3;
 	}
 
+	/**
+	 * Método area que devuelve el área del triángulo
+	 */
 	@Override
 	public double area() {
 		double auxiliar;
@@ -47,6 +50,10 @@ public class Triangulo extends Poligono {
 		return resultado;
 	}
 
+	/**
+	 * Método string que devuelve una cadena con el tipo de polígono y el el número
+	 * de lados
+	 */
 	@Override
 	public String toString() {
 		String cadena = "";
