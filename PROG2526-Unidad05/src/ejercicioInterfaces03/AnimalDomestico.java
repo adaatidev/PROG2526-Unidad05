@@ -1,4 +1,4 @@
-package ejercicio06_03;
+package ejercicioInterfaces03;
 
 public abstract class AnimalDomestico implements Vivir {
 

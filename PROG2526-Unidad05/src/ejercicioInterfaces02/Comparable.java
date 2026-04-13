@@ -1,4 +1,4 @@
-package ejercicio06_01;
+package ejercicioInterfaces02;
 
 public interface Comparable {
 

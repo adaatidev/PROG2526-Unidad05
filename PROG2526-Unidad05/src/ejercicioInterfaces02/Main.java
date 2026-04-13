@@ -1,4 +1,4 @@
-package ejercicio06_02;
+package ejercicioInterfaces02;
 
 import java.util.Arrays;
 

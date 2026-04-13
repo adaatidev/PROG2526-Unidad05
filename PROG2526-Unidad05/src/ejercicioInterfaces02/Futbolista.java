@@ -1,4 +1,4 @@
-package ejercicio06_02;
+package ejercicioInterfaces02;
 
 public class Futbolista implements Comparable {
 	protected int nCamiseta;
