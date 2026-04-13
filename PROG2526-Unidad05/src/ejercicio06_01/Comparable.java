@@ -1,5 +1,7 @@
 package ejercicio06_01;
 
-public class Comparable {
+public interface Comparable {
+
+	int compareTo(Object obj);
 
 }
