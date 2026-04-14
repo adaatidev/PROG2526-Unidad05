@@ -1,4 +1,4 @@
-package ejercicioExtra;
+package ejercicioExtra01;
 
 public abstract class EquipoHosteleria {
 	protected int id;

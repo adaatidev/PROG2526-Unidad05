@@ -1,4 +1,4 @@
-package ejercicioExtra;
+package ejercicioExtra01;
 
 public class LavadoraIndustrial extends LavadoIndustrial implements Instalable {
 

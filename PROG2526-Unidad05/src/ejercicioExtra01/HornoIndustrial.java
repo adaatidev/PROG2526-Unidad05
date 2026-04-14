@@ -1,4 +1,4 @@
-package ejercicioExtra;
+package ejercicioExtra01;
 
 public class HornoIndustrial extends CoccionIndustrial implements Instalable {
 
