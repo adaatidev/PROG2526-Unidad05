@@ -1,22 +1,22 @@
 package ejercicioComparator01;
 
-import java.util.Arrays;
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Random rnd = new Random();
 
-		Integer[] numeros = new Integer[20];
+		ArrayList<Integer> numeros = new ArrayList<>();
 
-		for (int i = 0; i < numeros.length; i++) {
-			numeros[i] = rnd.nextInt(1, 101);
+		for (int i = 0; i < 20; i++) {
+			numeros.add((int) (Math.random() * 100) + 1);
 		}
 
-		System.out.println("Original: " + Arrays.toString(numeros));
-		Arrays.sort(numeros, new Comparador());
-		System.out.println("Decreciente: " + Arrays.toString(numeros));
+		Collections.sort(numeros, new Comparador());
+
+		System.out.println(numeros.toString());
+
 	}
 
 }
